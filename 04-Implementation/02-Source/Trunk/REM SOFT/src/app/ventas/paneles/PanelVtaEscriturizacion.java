@@ -38,7 +38,7 @@ public class PanelVtaEscriturizacion extends JPanel{
 	
 	/* Inits */
 	private void initTitle() {
-		JLabel lblTitle = new JLabel("Cantidad de dias validos para la firma del boleto de Compra-Venta para la Escriturización:");
+		JLabel lblTitle = new JLabel("Cantidad de dias validos para la firma del boleto de Compra-Venta para la EscriturizaciÃ³n:");
 		lblTitle.setOpaque(false);
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblTitle.setForeground(Color.white);

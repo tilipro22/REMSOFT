@@ -548,7 +548,7 @@ public class FrameVenta extends FrameDefault {
 				}
 				else if (precioTotal.compareTo(precioOriginal) < 0) {
 					int option = JOptionPane.showConfirmDialog(null, "El precio total ($" + precioTotal + ") es menor que "
-							+ "el precio original ($" + precioOriginal + ").\n¿Desea Continuar y reemplazar el precio?");
+							+ "el precio original ($" + precioOriginal + ").\nDesea Continuar y reemplazar el precio?");
 					
 					if (option == 1 || option == 2) {
 						isValido = false;

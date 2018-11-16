@@ -44,6 +44,8 @@ public class FrameAddPersona extends FrameDefault{
 	private boolean isModificar = false;
 
 	public FrameAddPersona() {
+
+			// Se definen las propiedas del titulo y barra frontal
 		setTituloBarra("   Agregar Persona - REM Soft");
 		setSizeFrame(getWidth(), 600);
 		setLocationRelativeTo(null);
@@ -56,16 +58,18 @@ public class FrameAddPersona extends FrameDefault{
 		
 		panelMenu = new PanelMenu();
 		getContentPane().add(panelMenu);
-		
+
+			// Init panel Central
 		panelCentral = new JPanel();
 		panelCentral.setLayout(null);
 		panelCentral.setBounds(0, panelMenu.getHeight()+lblCerrar.getHeight(), getWidth(), 450);
 		
-
+			// Inicializacion de los paneles
 		inicializarPaneles();
 		
 		getContentPane().add(panelCentral);
-		
+
+			// Inicializar a botones
 		panelAbajo = new PanelAbajo();
 		getContentPane().add(panelAbajo);
 	}

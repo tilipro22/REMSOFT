@@ -34,10 +34,10 @@ public class PanelAddPersona_Datos extends PanelConstants {
 	static final int TXT_DOMICILIO = 3;
 	static final int TXT_CIUDAD = 4;
 	static final int TXT_PROVINCIA = 5;
-	static final int TXT_NACIONALIDAD = 6;
-	static final int TXT_TELEFONO = 7;
-	static final int TXT_CELULAR = 8;
-	static final int TXT_EMAIL = 9;
+	//static final int TXT_NACIONALIDAD = 6;
+	static final int TXT_TELEFONO = 6;
+	static final int TXT_CELULAR = 7;
+	static final int TXT_EMAIL = 8;
 	
 	static final int CBX_CIUDAD = 4;
 	static final int CBX_PROVINCIA = 5;
@@ -216,9 +216,9 @@ public class PanelAddPersona_Datos extends PanelConstants {
 			switch (i) {
 			case TXT_NOMBRE:
 			case TXT_APELLIDO:
-				//Valida el nombre y apellido, solo se admiten letras, letras con tilde, no se puede comenzar con un espacio y tener un tamaÒo de mas de 50 caracteres
+				//Valida el nombre y apellido, solo se admiten letras, letras con tilde, no se puede comenzar con un espacio y tener un tama√±o de mas de 50 caracteres
 				
-				if (! cadena.matches("[aA-zZ, Ò—, ,·¡, È…, ÌÕ, Û”, ˙⁄]+"))
+				if (! cadena.matches("[aA-zZ, √±√ë, ,√°√Å, √©√â, √≠√ç, √≥√ì, √∫√ö]+"))
 					esValido = txtIncorrecto(txtDatos.get(i));
 				else {
 					
@@ -268,13 +268,20 @@ public class PanelAddPersona_Datos extends PanelConstants {
 				
 			case TXT_CIUDAD:
 			case TXT_PROVINCIA:
-			case TXT_NACIONALIDAD:
+			//case TXT_NACIONALIDAD:
 				//Valida que no este en blanco y la cantidad maxima de caracteres
-				
-				if (!cadena.equals("") && !Character.isSpace(cadena.charAt(0)) && cadena.length() <= 30 )
-					txtCorrecto(txtDatos.get(i));
-				else
-					esValido = txtIncorrecto(txtDatos.get(i));
+
+
+				if (! cbxPaises.getSelectedItem().toString().toUpperCase().equals("ARGENTINA")) {
+
+					//if (i != TXT_NACIONALIDAD) {
+						if (!cadena.equals("") && !Character.isSpace(cadena.charAt(0)) && cadena.length() <= 30 )
+							txtCorrecto(txtDatos.get(i));
+						else
+							esValido = txtIncorrecto(txtDatos.get(i));
+					//}
+				}
+
 					
 				break;
 				
@@ -327,9 +334,19 @@ public class PanelAddPersona_Datos extends PanelConstants {
 		String apellido = txtDatos.get(TXT_APELLIDO).getText();
 		BigInteger dni = new BigInteger(txtDatos.get(TXT_DNI).getText());
 		String domicilio = txtDatos.get(TXT_DOMICILIO).getText();
-		String ciudad = txtDatos.get(TXT_CIUDAD).getText();
-		String provincia = txtDatos.get(TXT_PROVINCIA).getText();
-		String nacionalidad = txtDatos.get(TXT_NACIONALIDAD).getText();
+
+		String ciudad = "";
+		String provincia = "";
+		if (cbxPaises.getSelectedItem().toString().toUpperCase().equals("ARGENTINA")) {
+			ciudad = cbxCiudades.getSelectedItem().toString();
+			provincia = cbxProvincias.getSelectedItem().toString();
+		} else {
+			ciudad = txtDatos.get(TXT_CIUDAD).getText();
+			provincia = txtDatos.get(TXT_PROVINCIA).getText();
+		}
+
+		//String nacionalidad = txtDatos.get(TXT_NACIONALIDAD).getText();
+		String nacionalidad = cbxPaises.getSelectedItem().toString();
 		
 		return new Persona(nombre, apellido, dni, domicilio, ciudad, provincia, nacionalidad);
 	}
@@ -372,14 +389,17 @@ public class PanelAddPersona_Datos extends PanelConstants {
 				txtDatos.get(TXT_DNI).setText(p.getDni().toString());
 				txtDatos.get(TXT_DNI).setEditable(false);
 			}
+
 			if (i == TXT_DOMICILIO)
 				txtDatos.get(TXT_DOMICILIO).setText(p.getDomicilio());
-			if (i == TXT_CIUDAD)
+
+			if (i == TXT_CIUDAD && !p.getNacionalidad().toUpperCase().equals("ARGENTINA"))
 				txtDatos.get(TXT_CIUDAD).setText(p.getCiudad());
-			if (i == TXT_PROVINCIA)
+
+			if (i == TXT_PROVINCIA && !p.getNacionalidad().toUpperCase().equals("ARGENTINA"))
 				txtDatos.get(TXT_PROVINCIA).setText(p.getProvincia());
-			if (i == TXT_NACIONALIDAD)
-				txtDatos.get(TXT_NACIONALIDAD).setText(p.getNacionalidad());
+			//if (i == TXT_NACIONALIDAD)
+				//txtDatos.get(TXT_NACIONALIDAD).setText(p.getNacionalidad());
 			
 			switch (i) {
 			case TXT_TELEFONO:
@@ -397,6 +417,13 @@ public class PanelAddPersona_Datos extends PanelConstants {
 					txtDatos.get(TXT_EMAIL).setText(p.getContacto().getMail());
 				break;
 			}			
+		}
+
+		cbxPaises.setSelectedItem(p.getNacionalidad());
+
+		if (p.getNacionalidad().toUpperCase().equals("ARGENTINA")) {
+			cbxProvincias.setSelectedItem(p.getProvincia());
+			cbxCiudades.setSelectedItem(p.getCiudad());
 		}
 	}
 	

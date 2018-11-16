@@ -266,7 +266,7 @@ public class FrameSolicitud extends FrameDefault{
 		cbxInmueble.setSelectedItem(1);
 		addCajaLblAndCbx(panelCarac, new JLabel("Alternativa 1:"), cbxAlt1 = new JComboBox<String>(), arrayAlternativa1);
 		//addCajaLblAndCbx(panelCarac, new JLabel("Alternativa 2:"), cbxInmueble = new JComboBox<String>(), arrayAlternativa2);
-		addCajaLblAndCbx(panelCarac, new JLabel("Provincia:"), cbxProvincia = new JComboBox<String>(), new String[]{"TODAS", "Buenos Aires", "Catamarca", "Chaco", "Chubut", "CÛrdoba", "Corrientes", "Entre RÌos", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", "NeuquÈn", "RÌo Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Santiago del Estero", "Tierra del Fuego", "Tucum·n"});
+		addCajaLblAndCbx(panelCarac, new JLabel("Provincia:"), cbxProvincia = new JComboBox<String>(), new String[]{"TODAS", "Buenos Aires", "Catamarca", "Chaco", "Chubut", "C√≥rdoba", "Corrientes", "Entre R√≠os", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", "Neuqu√©n", "R√≠o Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Santiago del Estero", "Tierra del Fuego", "Tucum√°n"});
 		addCajaLblAndCbx(panelCarac, new JLabel("Localidad:"), cbxLocalidad = new JComboBox<String>(), arrayLocalidad);
 		addCajaLblAndCbx(panelCarac, new JLabel("Operacion:"), cbxOperacion = new JComboBox<String>(), new String[]{"TODAS","Alquiler", "Venta"});
 		
